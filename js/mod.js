@@ -1,12 +1,12 @@
 let modInfo = {
-	name: "Prestige Tree Rewritten",
-	id: "ptr",
-	author: "Jacorb",
+	name: "Silly Moding Tree",
+	id: "bdp",
+	author: "BobDodPop",
 	pointsName: "points",
-	discordName: "PT Rewritten Server",
-	discordLink: "https://discord.gg/TFCHJJT",
-	changelogLink: "https://github.com/Jacorb90/Prestige-Tree/blob/master/changelog.md",
-    offlineLimit: 1,  // In hours
+	discordName: "No discord",
+	discordLink: "No discord",
+	changelogLink: "https://github.com/BobDodPop/Prestige-Tree/blob/master/changelog.md",
+    offlineLimit: 30,  // In hours
     initialStartPoints: new Decimal(10), // Used for hard resets and new players
 	endgame: new Decimal("e3.14e16"),
 	// specialEndgameText: "v1.3 Endgame: e3.14e16 Points",
@@ -14,9 +14,9 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "1.3",
-	patch: 1,
-	name: "The Expansion Update",
+	num: "0.1",
+	patch: 0,
+	name: "Just messing around",
 }
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
