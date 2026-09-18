@@ -107,7 +107,7 @@ function addNotification(type="none",text="This is a test notification.",title="
 			notificationType = "milestone-notification"
 			break;
 		case "challenge":
-			notificationTitle = "Challenge Complete";
+			notificationTitle = "Challenge Complete!";
 			notificationType = "challenge-notification"
 			break;
 		default:
