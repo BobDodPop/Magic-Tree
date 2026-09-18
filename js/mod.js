@@ -99,11 +99,11 @@ var notificationID = 0;
 function addNotification(type="none",text="This is a test notification.",title="",timer=3) {
 	switch(type) {
 		case "achievement":
-			notificationTitle = "Achievement Unlocked!";
+			notificationTitle = "New Achievement!";
 			notificationType = "achievement-notification"
 			break;
 		case "milestone":
-			notificationTitle = "Milestone Gotten!";
+			notificationTitle = "Milestone Obtained!";
 			notificationType = "milestone-notification"
 			break;
 		case "challenge":
