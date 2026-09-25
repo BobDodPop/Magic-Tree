@@ -2,10 +2,10 @@ addLayer("p", {
         name: "prestige", // This is optional, only used in a few places, If absent it just uses the layer id.
         symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-        color: "#31aeb0",
+        color: "#800090",
         requires: new Decimal(10), // Can be a function that takes requirement increases into account
-        resource: "prestige points", // Name of prestige currency
-        baseResource: "points", // Name of resource prestige is based on
+        resource: "condensed mana", // Name of prestige currency
+        baseResource: "mana", // Name of resource prestige is based on
         baseAmount() {return player.points}, // Get the current amount of baseResource
         type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
         exponent() { return ((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?0.75:0.5 }, // Prestige currency exponent
@@ -32,7 +32,7 @@ addLayer("p", {
         },
         row: 0, // Row the layer is in on the tree (0 is the first row)
         hotkeys: [
-            {key: "p", description: "Press P to Prestige.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+            {key: "c", description: "Press C to Condense your Mana.", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
         ],
         layerShown(){return true},
 		passiveGeneration() { return (hasMilestone("g", 1)&&player.ma.current!="p")?1:0 },
@@ -63,8 +63,8 @@ addLayer("p", {
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?2:1).pow(tmp.h.costExp11) },
 			},
 			12: {
-				title: "Prestige Boost",
-				description: "Prestige Points boost Point generation.",
+				title: "Mana Channeling",
+				description: "Condensed Mana boosts Mana generation.",
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?10:1).pow(tmp.h.costExp11) },
 				effect() {
 					if (inChallenge("ne", 11)) return new Decimal(1);
@@ -127,7 +127,7 @@ addLayer("p", {
 			},
 			14: {
 				title: "Prestigious Intensity",
-				description: "<b>Prestige Boost</b>'s effect is cubed (unaffected by softcap).",
+				description: "<b>Mana Channeling</b>'s effect is cubed (unaffected by softcap).",
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"1e589":"1e4070000").pow(tmp.h.costExp11) },
 				pseudoUnl() { return hasUpgrade("hn", 11) && hasUpgrade("p", 13) },
 				pseudoReq: 'Req: 1e168,000 Prestige Points in the "Productionless" Hindrance',
@@ -135,14 +135,14 @@ addLayer("p", {
 				unlocked() { return player.p.pseudoUpgs.includes(Number(this.id)) },
 			},
 			21: {
-				title: "More Prestige",
-				description() { return "Prestige Point gain is increased by "+(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"1e52":"80")+"%." },
+				title: "More Condensation",
+				description() { return "Consensed Mana gain is increased by "+(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"1e52":"80")+"%." },
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?1e171:20).pow(tmp.h.costExp11) },
 				unlocked() { return hasAchievement("a", 21)&&hasUpgrade("p", 11) },
 			},
 			22: {
-				title: "Upgrade Power",
-				description: "Point generation is faster based on your Prestige Upgrades bought.",
+				title: "The Power of Magic",
+				description: "Mana generation is faster based on your Condensed Mana Upgrades bought.",
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?1e262:75).pow(tmp.h.costExp11) },
 				effect() {
 					let eff = Decimal.pow(1.4, player.p.upgrades.length);
@@ -163,8 +163,8 @@ addLayer("p", {
 				},
 			},
 			23: {
-				title: "Reverse Prestige Boost",
-				description: "Prestige Point gain is boosted by your Points.",
+				title: "Compact Condensing",
+				description: "Condensed Mana gain is boosted by your Mana.",
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?1e305:5e3).pow(tmp.h.costExp11) },
 				effect() {
 					let eff = player.points.plus(1).log10().cbrt().plus(1);
