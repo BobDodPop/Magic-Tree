@@ -58,8 +58,8 @@ addLayer("p", {
 			rows: 4,
 			cols: 4,
 			11: {
-				title: "Begin",
-				description: "Generate 1 Point every second.",
+				title: "Awaken your power",
+				description: "Generate 1 Mana every second.",
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?2:1).pow(tmp.h.costExp11) },
 			},
 			12: {
