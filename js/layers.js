@@ -550,13 +550,13 @@ addLayer("b", {
 })
 
 addLayer("g", {
-        name: "generators", // This is optional, only used in a few places, If absent it just uses the layer id.
-        symbol: "G", // This appears on the layer's node. Default is the id with the first letter capitalized
+        name: "crystals", // This is optional, only used in a few places, If absent it just uses the layer id.
+        symbol: "C", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
-        color: "#a3d9a5",
+        color: "#68a0b0",
         requires() { return new Decimal(200).times((player.g.unlockOrder&&!player.g.unlocked)?5000:1) }, // Can be a function that takes requirement increases into account
-        resource: "generators", // Name of prestige currency
-        baseResource: "points", // Name of resource prestige is based on
+        resource: "crystals", // Name of prestige currency
+        baseResource: "mana", // Name of resource prestige is based on
         baseAmount() {return player.points}, // Get the current amount of baseResource
         type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
 		branches: ["p"],
@@ -666,27 +666,27 @@ addLayer("g", {
 		increaseUnlockOrder: ["b"],
 		milestones: {
 			0: {
-				requirementDescription: "8 Generators",
+				requirementDescription: "8 Crystals",
 				done() { return player.g.best.gte(8) || hasAchievement("a", 41) || hasAchievement("a", 71) },
-				effectDescription: "Keep Prestige Upgrades on reset.",
+				effectDescription: "Keep Condensed Mana Upgrades on reset.",
 			},
 			1: {
-				requirementDescription: "10 Generators",
+				requirementDescription: "10 Crystals",
 				done() { return player.g.best.gte(10) || hasAchievement("a", 71) },
-				effectDescription: "You gain 100% of Prestige Point gain every second.",
+				effectDescription: "You gain 100% of Condesed Mana gain every second.",
 			},
 			2: {
-				requirementDescription: "15 Generators",
+				requirementDescription: "15 Crystals",
 				done() { return player.g.best.gte(15) || hasAchievement("a", 71) },
-				effectDescription: "You can buy max Generators.",
+				effectDescription: "You can buy max Crystals.",
 			},
 		},
 		upgrades: {
 			rows: 3,
 			cols: 5,
 			11: {
-				title: "GP Combo",
-				description: "Best Generators boost Prestige Point gain.",
+				title: "Crystal Array",
+				description: "Best Crystals boost Condensed Mana gain.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?380:3) },
 				effect() { return player.g.best.sqrt().plus(1).pow(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?5e5:1) },
 				unlocked() { return player.g.unlocked },
@@ -694,8 +694,8 @@ addLayer("g", {
 				formula() { return ((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"(x+1)^250,000":"sqrt(x)+1" },
 			},
 			12: {
-				title: "I Need More!",
-				description: "Boosters add to the Generator base.",
+				title: "Shiny Crystals",
+				description: "Ritual Pedestals add to the Crystal base.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?375:7) },
 				effect() { 
 					let ret = player.b.points.add(1).log10().sqrt().div(3).times(hasUpgrade("e", 14)?upgradeEffect("e", 14):1);
@@ -711,9 +711,9 @@ addLayer("g", {
 				},
 			},
 			13: {
-				title: "I Need More II",
-				description: "Best Prestige Points add to the Generator base.",
+				title: "Shinier Crystals",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?381:8) },
+				description: "Best Condensed Mana adds to the Crystal base.",
 				effect() { 
 					let ret = player.p.best.add(1).log10().add(1).log10().div(3).times(hasUpgrade("e", 14)?upgradeEffect("e", 14):1);
 					if (hasUpgrade("s", 24)) ret = ret.times(upgradeEffect("s", 24));
@@ -735,7 +735,7 @@ addLayer("g", {
 			},
 			15: {
 				title: "Outer Synergy",
-				description: "<b>Self-Synergy</b> is stronger based on your Generators.",
+				description: "<b>Self-Synergy</b> is stronger based on your Crystals.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?382:15) },
 				effect() { 
 					let eff = player.g.points.sqrt().add(1);
@@ -747,8 +747,8 @@ addLayer("g", {
 				formula() { return upgradeEffect("g", 15).gte(400)?"((x+1)^(1/6))*(400^(2/3))":"sqrt(x)+1" },
 			},
 			21: {
-				title: "I Need More III",
-				description: "Generator Power boost its own generation.",
+				title: "Shiniest Crystals",
+				description: "Crystal Power boosts its own generation.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"1e314":1e10) },
 				currencyDisplayName: "generator power",
                 currencyInternalName: "power",
@@ -772,7 +772,7 @@ addLayer("g", {
 			},
 			22: {
 				title: "Discount Two",
-				description: "Generators are cheaper based on your Prestige Points.",
+				description: "Crystals are cheaper based on your Consensed Mana.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"5e47141":1e11) },
 				currencyDisplayName: "generator power",
                 currencyInternalName: "power",
@@ -788,7 +788,7 @@ addLayer("g", {
 			},
 			23: {
 				title: "Double Reversal",
-				description: "<b>Reverse Prestige Boost</b> is stronger based on your Boosters.",
+				description: "<b>Reverse Prestige Boost</b> is stronger based on your Ritual Pedestals.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"2e47525":1e12) },
 				currencyDisplayName: "generator power",
                 currencyInternalName: "power",
@@ -806,7 +806,7 @@ addLayer("g", {
 			},
 			25: {
 				title: "I Need More IV",
-				description: "Prestige Points boost Generator Power gain.",
+				description: "Prestige Points boost Crystal Power gain.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"1e47526":1e14) },
 				currencyDisplayName: "generator power",
                 currencyInternalName: "power",
@@ -826,7 +826,7 @@ addLayer("g", {
 			},
 			31: {
 				title: "Absurd Generation",
-				description: "Generator Power multiplies the Super Generator base.",
+				description: "Crystal Power multiplies the Super Generator base.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"1e47545":"e4.4e7") },
 				currencyDisplayName: "generator power",
                 currencyInternalName: "power",
