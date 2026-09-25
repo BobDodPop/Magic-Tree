@@ -2,7 +2,7 @@ let modInfo = {
 	name: "Silly Moding Tree",
 	id: "bdp",
 	author: "BobDodPop",
-	pointsName: "points",
+	pointsName: "mana",
 	discordName: "No discord",
 	discordLink: "No discord",
 	changelogLink: "https://github.com/BobDodPop/Prestige-Tree/blob/master/changelog.md",
