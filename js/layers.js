@@ -103,8 +103,8 @@ addLayer("p", {
 				},
 			},
 			13: {
-				title: "Self-Synergy",
-				description: "Points boost their own generation.",
+				title: "Arcane Loop",
+				description: "Mana boosts its own generation.",
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?50:5).pow(tmp.h.costExp11) },
 				effect() { 
 					let eff = player.points.plus(1).log10().pow(0.75).plus(1);
@@ -126,7 +126,7 @@ addLayer("p", {
 				},
 			},
 			14: {
-				title: "Prestigious Intensity",
+				title: "Better Ritual Circles",
 				description: "<b>Mana Channeling</b>'s effect is cubed (unaffected by softcap).",
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?"1e589":"1e4070000").pow(tmp.h.costExp11) },
 				pseudoUnl() { return hasUpgrade("hn", 11) && hasUpgrade("p", 13) },
@@ -141,7 +141,7 @@ addLayer("p", {
 				unlocked() { return hasAchievement("a", 21)&&hasUpgrade("p", 11) },
 			},
 			22: {
-				title: "The Power of Magic",
+				title: "Magical Investments",
 				description: "Mana generation is faster based on your Condensed Mana Upgrades bought.",
 				cost() { return tmp.h.costMult11.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?1e262:75).pow(tmp.h.costExp11) },
 				effect() {
