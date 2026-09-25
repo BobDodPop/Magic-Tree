@@ -6,7 +6,7 @@ let modInfo = {
 	discordName: "No discord",
 	discordLink: "No discord",
 	changelogLink: "https://github.com/BobDodPop/Prestige-Tree/blob/master/changelog.md",
-    offlineLimit: 30,  // In hours
+    offlineLimit: 48,  // In hours
     initialStartPoints: new Decimal(10), // Used for hard resets and new players
 	endgame: new Decimal("e3.14e16"),
 	// specialEndgameText: "v1.3 Endgame: e3.14e16 Points",
