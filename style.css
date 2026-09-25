@@ -16,7 +16,7 @@ body {
 	background-color: var(--background);
 	color: var(--color);
 	overflow: hidden;
-	--background: #0f0f0f;
+	--background: #afa0ff;
 	--color: #dfdfdf;
 	--points: #ffffff;
 }
