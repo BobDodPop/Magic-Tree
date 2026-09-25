@@ -9146,27 +9146,27 @@ addLayer("a", {
             rows: 16,
             cols: 5,
             11: {
-                name: "All that progress is gone!",
+                name: "Feel the power!",
                 done() { return player.p.points.gt(0) },
-                tooltip: "Perform a Prestige reset.",
+                tooltip: "Condense Mana for the first time",
 				image: "images/achs/11.png",
             },
 			12: {
-				name: "Point Hog",
+				name: "Mana Hungry",
 				done() { return player.points.gte(25) },
-				tooltip: "Reach 25 Points.",
+				tooltip: "Reach 25 Mana.",
 				image: "images/achs/12.png",
 			},
 			13: {
-				name: "Prestige all the Way",
+				name: "Condesing All Day",
 				done() { return player.p.upgrades.length>=3 },
-				tooltip: "Purchase 3 Prestige Upgrades. Reward: Gain 10% more Prestige Points.",
+				tooltip: "Purchase 3 Condesed Mana Upgrades. Reward: Gain 10% more Condesed Mana.",
 				image: "images/achs/13.png",
 			},
 			14: {
-				name: "Prestige^2",
+				name: "Arcane Compression",
 				done() { return player.p.points.gte(25) },
-				tooltip: "Reach 25 Prestige Points.",
+				tooltip: "Reach 25 Condesed Mana.",
 				image: "images/achs/14.png",
 			},
 			15: {
@@ -9179,7 +9179,7 @@ addLayer("a", {
 			21: {
 				name: "New Rows Await!",
 				done() { return player.b.unlocked||player.g.unlocked },
-				tooltip: "Perform a Row 2 reset. Reward: Generate Points 10% faster, and unlock 3 new Prestige Upgrades.",
+				tooltip: "Perform a Row 2 reset. Reward: Generate Mana 10% faster, and unlock 3 new Prestige Upgrades.",
 				image: "images/achs/21.png",
 			},
 			22: {
@@ -9210,13 +9210,13 @@ addLayer("a", {
 			31: {
 				name: "Further Further Down",
 				done() { return player.e.unlocked||player.t.unlocked||player.s.unlocked },
-				tooltip: "Perform a Row 3 reset. Reward: Generate Points 50% faster, and Boosters/Generators don't increase each other's requirements.",
+				tooltip: "Perform a Row 3 reset. Reward: Generate Mana 50% faster, and Boosters/Generators don't increase each other's requirements.",
 				image: "images/achs/31.png",
 			},
 			32: {
 				name: "Why no meta-layer?",
 				done() { return player.points.gte(Number.MAX_VALUE) },
-				tooltip: "Reach 1.8e308 Points. Reward: Double Prestige Point gain.",
+				tooltip: "Reach 1.8e308 Mana. Reward: Double Prestige Point gain.",
 				image: "images/achs/32.png",
 			},
 			33: {
