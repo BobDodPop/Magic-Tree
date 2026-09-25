@@ -1,6 +1,6 @@
 let modInfo = {
-	name: "Silly Moding Tree",
-	id: "bdp",
+	name: "Magic Tree",
+	id: "bdp-mt",
 	author: "BobDodPop",
 	pointsName: "mana",
 	discordName: "No discord",
