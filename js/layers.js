@@ -2449,13 +2449,13 @@ addLayer("s", {
 })
 
 addLayer("sb", {
-        name: "super boosters", // This is optional, only used in a few places, If absent it just uses the layer id.
-        symbol: "SB", // This appears on the layer's node. Default is the id with the first letter capitalized
+        name: "ritual circles", // This is optional, only used in a few places, If absent it just uses the layer id.
+        symbol: "RC", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
         color: "#504899",
         requires: new Decimal(100), // Can be a function that takes requirement increases into account
-        resource: "super boosters", // Name of prestige currency
-        baseResource: "boosters", // Name of resource prestige is based on
+        resource: "ritual circles", // Name of prestige currency
+        baseResource: "ritual pedestals", // Name of resource prestige is based on
         baseAmount() {return player.b.points}, // Get the current amount of baseResource
 		roundUpCost: true,
         type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
